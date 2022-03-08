@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oibis <oibis@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/02 02:42:52 by oibis             #+#    #+#             */
-/*   Updated: 2022/02/09 14:37:53 by oibis            ###   ########.fr       */
+/*   Created: 2022/03/08 13:42:01 by oibis             #+#    #+#             */
+/*   Updated: 2022/03/08 17:24:29 by oibis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* memcpy işlevi 'boyut' baytı 'kaynak' adresinden başlayan nesneden 
-hedef adresinden başlayan nesneye kopyalar. 
-Bu işlevde kaynak dizisinin hedef dizisinin üzerine binmesi durumundaki 
-davranışı tanımsızdır; 
-üstüste binme olasılığı varsa memmove kullanın. 
+#include "./includes/ft_printf.h"
 
-1) memcpy() doesn’t check for overflow or \0 
-2) memcpy() leads to problems when source and destination addresses overlap. 
-
-memmove() is another library function that handles overlapping well */
-
-#include "libft.h"
+void	ft_putchar_tot(char c, size_t *tot)
+{
+	*tot += write(1, &c, 1);
+}
 
 void	*ft_memcpy(void *dest, const void *src, size_t len)
 {
@@ -41,3 +35,24 @@ void	*ft_memcpy(void *dest, const void *src, size_t len)
 	}
 	return (dest);
 }
+
+size_t	ft_strlen(const char *str)
+{
+	int	i;
+
+	i = 0;
+	while (*(str++))
+		i++;
+	return (i);
+}
+char	*ft_strdup(const char *s1)
+{
+	char	*s2;
+
+	s2 = (char *)malloc(sizeof(char) * (int)ft_strlen(s1) + 1);
+	if (!s2)
+		return (0);
+	ft_memcpy(s2, s1, ft_strlen(s1) + 1);
+	return (s2);
+}
+
