@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oibis <oibis@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
+/*   By: oibis <oibis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 21:56:59 by oibis             #+#    #+#             */
-/*   Updated: 2022/03/08 17:40:30 by oibis            ###   ########.fr       */
+/*   Updated: 2022/03/09 15:03:26 by oibis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/ft_printf.h"
-#include <stdio.h>
+#include "ft_printf.h"
 
-void parse_format(char c, va_list args, size_t *tot)
+void	parse_format(char c, va_list args, size_t *tot)
 {
 	if (c == 'c')
 		put_char(va_arg(args, int), tot);
@@ -31,13 +30,11 @@ void parse_format(char c, va_list args, size_t *tot)
 		put_hex_up(va_arg(args, unsigned long), tot);
 	else if (c == '%')
 		*tot += write(1, &c, 1);
-
-	/*  */
 }
 
-void parse_input(const char *str, va_list args, size_t *tot)
+void	parse_input(const char *str, va_list args, size_t *tot)
 {
-	int index;
+	int	index;
 
 	index = 0;
 	while (str[index])
@@ -48,25 +45,19 @@ void parse_input(const char *str, va_list args, size_t *tot)
 			ft_putchar_tot(str[index], tot);
 		index++;
 	}
-} /* */
+}
 
-int ft_printf(const char *str, ...)
+int	ft_printf(const char *str, ...)
 {
-	va_list args;
-	// char *s;
-	size_t tot;
-
-	// s = ft_strdup(str);
-	// if (!s)
-	//	return (0);
+	va_list	args;
+	size_t	tot;
 
 	va_start(args, str);
 	tot = 0;
 	parse_input(str, args, &tot);
-	// free(s);
 	return ((int)tot);
 }
-
+/*
 int main()
 {
 	char *s = "osman";
@@ -76,28 +67,28 @@ int main()
 	ft_printf("%c\n", '\\');
 
 	printf("\nstring:\n");
-	printf("%s\n", "1000");
-	ft_printf("%s\n", "1000");
+	printf("%i : ", printf("%s\n", NULL));
+	printf("%i : ", ft_printf("%s\n", NULL));
 
 	printf("\ninteger:\n");
 	printf("%i\n", -1000);
 	ft_printf("%i\n", -1000);
 
 	printf("\nunsigned decimal:\n");
-	printf("%u\n", 1000);
-	ft_printf("%u\n", 1000);
+	printf("%u\n", -1);
+	ft_printf("%u\n", -1);
 
 	printf("\ndecimal:\n");
 	printf("%d\n", printf("%u\n", -1000));
 	printf("%d\n", ft_printf("%u\n", -1000));
 
 	printf("\nhexa_low:\n");
-	printf("%x\n", 1000);
-	ft_printf("%x\n", 1000);
+	printf("%x\n", __LONG_MAX__);
+	ft_printf("%x\n", __LONG_MAX__);
 
 	printf("\nhexa_UP:\n");
-	printf("%X\n", -1000);
-	ft_printf("%X\n", -1000);
+	printf("%X\n",__LONG_MAX__);
+	ft_printf("%X\n", __LONG_MAX__);
 
 	printf("\npointer:\n");
 	printf("%i : ", printf("%p\n", s));
@@ -106,4 +97,4 @@ int main()
 	printf("\npercent:\n");
 	printf("%%\n");
 	ft_printf("%%\n");
-}
+} */
