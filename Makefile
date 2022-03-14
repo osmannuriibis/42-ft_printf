@@ -1,7 +1,7 @@
 NAME 		=	libftprintf.a
 
 CC 			= 	clang
-CFLAGS 		=	-Wall -Wextra -Werror -c
+CFLAGS 		=	-Wall -Wextra -Werror -c -fpic
 
 RM 			=	rm -rf
 
@@ -30,8 +30,6 @@ clean:
 fclean: clean
 	@$(RM) $(NAME)
 
-test:
-	
 	
 
 re:
