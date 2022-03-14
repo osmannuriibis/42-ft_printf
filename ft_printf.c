@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oibis <oibis@student.42.fr>                +#+  +:+       +#+        */
+/*   By: oibis <oibis@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 21:56:59 by oibis             #+#    #+#             */
-/*   Updated: 2022/03/09 15:03:26 by oibis            ###   ########.fr       */
+/*   Updated: 2022/03/14 15:03:24 by oibis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,8 @@ int main()
 	ft_printf("%x\n", __LONG_MAX__);
 
 	printf("\nhexa_UP:\n");
-	printf("%X\n",__LONG_MAX__);
-	ft_printf("%X\n", __LONG_MAX__);
+	printf("%#X\n",__LONG_MAX__);
+	ft_printf("%#X\n", __LONG_MAX__);
 
 	printf("\npointer:\n");
 	printf("%i : ", printf("%p\n", s));
